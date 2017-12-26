@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-const BASE_URL = 'http://localhost:8080/';
+const BASE_URL = 'http://localhost:8888/';
 const API_VER = 'api/v1/'
 const IMG_URL = 'assets/img/';
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
@@ -20,12 +20,10 @@ export class LoginService {
   }
 
   sendToken(token : any){
-    let tokenUrl2 = "http://localhost:8080/admin/test";
-    console.log('Bearer '+token);
-
+    let tokenUrl2 = BASE_URL + "admin/test";
     let getHeaders = new Headers({'Authorization':'Bearer '+token});
-
-    return this.http.get(tokenUrl2,{headers: getHeaders});
+    return this.http.get(tokenUrl2,{headers: getHeaders})
+    .map(res=> res.json());
   }
 
   logout(){

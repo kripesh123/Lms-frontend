@@ -7,9 +7,13 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 
 import { LoginService } from './services/login.service';
-import { HomeComponent } from './components/home/home.component';
+import {CustomerService} from './services/customer.service';
+import {PagerService} from './services/pager.service';
+
+
 
 @NgModule({
   declarations: [
@@ -24,7 +28,7 @@ import { HomeComponent } from './components/home/home.component';
     HttpModule,
     routing
   ],
-  providers: [LoginService],
+  providers: [LoginService, CustomerService, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
